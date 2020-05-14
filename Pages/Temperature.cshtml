@@ -1,0 +1,29 @@
+﻿@page
+@model TempModel
+@{
+    ViewData["Title"] = "Temperature Converter";
+}
+
+@{ 
+    List<SelectListItem> convertlist = new List<SelectListItem>();
+    convertlist.Add(new SelectListItem
+    { Text = "Farenheit to Celsius", Value = "F2C" });
+    convertlist.Add(new SelectListItem
+    { Text = "Celsius to Farenheit", Value = "C2F" });
+}
+
+    <div class="" style="width:50%; background-color:lightgrey; border-style:solid; border-width:medium; border-color:dimgray; font-family:'Franklin Gothic';">
+        <form method="post">
+            <div>
+                Conversion Method: @Html.DropDownList("convertlist", convertlist, new { @class = "form-control" })
+            </div>
+            <div>
+                Enter Temperature to Convert: <input type="text" name="tempinput" value="@Model.Input" />
+                <input type="submit" />
+            </div>
+        </form>
+        <div>Conversion Result: @Model.Output degrees</div>
+        <div class="alert-danger">@Model.Error</div>
+    </div>
+
+

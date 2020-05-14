@@ -1,0 +1,31 @@
+﻿@page
+@model MassModel
+@{
+    ViewData["Title"] = "Mass Converter";
+}
+
+@{
+    List<SelectListItem> convertlist = new List<SelectListItem>();
+    convertlist.Add(new SelectListItem
+    { Text = "Pounds to Ounces", Value = "P2O" });
+    convertlist.Add(new SelectListItem
+    { Text = "Ounces to Pounds", Value = "O2P" });
+    convertlist.Add(new SelectListItem
+    { Text = "Grams to Pounds", Value = "G2P" });
+    convertlist.Add(new SelectListItem
+    { Text = "Milligrams to Pounds", Value = "M2P" });
+}
+
+    <div class="" style="width:50%; background-color:lightgrey; border-style:solid; border-width:medium; border-color:dimgray; font-family:'Franklin Gothic';">
+        <form method="post">
+            <div>
+                Conversion Method: @Html.DropDownList("convertlist", convertlist, new { @class = "form-control" })
+            </div>
+            <div>Enter Mass to Convert: <input type="text" name="massinput" value="@Model.Input" />
+            <input type="submit" /></div>
+        </form>
+        <div>Conversion Result: @Model.Output @Model.Units</div>
+        <div class="alert-danger">@Model.Error</div>
+    </div>
+
+
